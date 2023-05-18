@@ -1,6 +1,7 @@
-#Compte à rebours de décollage de fusée
+Compte à rebours de décollage de fusée
 
 Ce projet consiste en un compte à rebours de décollage de fusée animé à l'aide de JavaScript, HTML et CSS.
+
 Fonctionnalités
 
     Affichage d'un compte à rebours avec un décompte de 10 à 0.
