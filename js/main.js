@@ -9,17 +9,21 @@ let btnReset;
 let compteur = 10;
 let timer;
 let billboard = document.querySelector('#billboard span');
-let rocket = document.querySelector('#rocket')
+let rocket = document.querySelector('#rocket');
+let alertShown = false;
 
 /***********************************************************************************/
 /* ********************************** FONCTIONS ************************************/
 /***********************************************************************************/
-function decollage()
-{
-    if (confirm('Do you want to launch the rocket ?\n---------\nPress C to show commands again')) {
-        timer = setInterval(startDecollage, 1000); // appel à startDecollage après 10s
+function decollage() {
+    if (!alertShown) {
+        if (confirm('Voulez-vous lancer le décollage de la fusée ?')) {
+            timer = setInterval(startDecollage, 1000);
+            alertShown = true;
+        }
+    } else {
+        timer = setInterval(startDecollage, 1000);
     }
-    
 }
 
 function startDecollage()
