@@ -16,7 +16,10 @@ let rocket = document.querySelector('#rocket')
 /***********************************************************************************/
 function decollage()
 {
-    timer = setInterval(startDecollage, 1000);
+    if (confirm('Do you want to launch the rocket ?\n---------\nPress C to show commands again')) {
+        timer = setInterval(startDecollage, 1000); // appel à startDecollage après 10s
+    }
+    
 }
 
 function startDecollage()
@@ -91,22 +94,40 @@ function etoiles()
     document.body.appendChild(div);
 }
 
+function commandes() {
+    alert('Green button : Start\nBlue button : Stop\nRed button : RàZ\n---------\nPress C to show commands again');
+}
+
 
 /************************************************************************************/
 /* ******************************** CODE PRINCIPAL **********************************/
 /************************************************************************************/
-document.addEventListener('DOMContentLoaded', function(){
-    
+document.addEventListener('DOMContentLoaded', function() {
     // sélection des boutons
     btnFire = document.getElementById('firing-button');
     btnStop = document.getElementById('cancel-button');
     btnReset = document.getElementById('raz-button');
-    // installation des events 
-    btnFire.addEventListener('click',decollage);
-    btnStop.addEventListener('click',stopDecollage);
-    btnReset.addEventListener('click',resetDecollage);
-    
-    //appel à la fnct etoiles() --> toutes les 500ms
-    setInterval(etoiles,500);
-    
-});
+  
+    // installation des événements
+    btnFire.addEventListener('click', decollage);
+    btnStop.addEventListener('click', stopDecollage);
+    btnReset.addEventListener('click', resetDecollage);
+  
+    // appel à la fonction etoiles() toutes les 500ms
+    setInterval(etoiles, 500);
+  
+    // Écoute de l'événement keydown ou keypress au niveau du document
+    document.addEventListener('keydown', function(event) {
+      // Vérification de la touche appuyée (touche "C")
+      if (event.key === 'c' || event.key === 'C') {
+        // Affichage de l'alerte avec les explications des boutons
+        commandes();
+      }
+    });
+  
+    // affiche les instructions après 1s
+    setTimeout(function() {
+        commandes();
+      }, 100);
+  });
+  
