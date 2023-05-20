@@ -17,7 +17,7 @@ let alertShown = false;
 /***********************************************************************************/
 function decollage() {
     if (!alertShown) {
-        if (confirm('Voulez-vous lancer le décollage de la fusée ?')) {
+        if (confirm('Do you want to launch the rocket ?\n---------\nPress C to show commands again')) {
             timer = setInterval(startDecollage, 1000);
             alertShown = true;
         }
